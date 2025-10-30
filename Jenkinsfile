@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/Extraordinary/blue-green-cicd-demo.git'
+                git 'https://github.com/Extraordinarytechy/blue-green-cicd-demo.git'
             }
         }
 

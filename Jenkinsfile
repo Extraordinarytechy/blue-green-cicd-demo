@@ -8,15 +8,15 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/Extraordinarytechy/blue-green-cicd-demo.git'
+                git branch: 'main',                      
+                    credentialsId: 'github-token',        
+                    url: 'https://github.com/Extraordinarytechy/blue-green-cicd-demo.git'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                dir('app') {
-                    sh 'docker build -t $DOCKER_IMAGE .'
-                }
+                sh 'docker build -t $DOCKER_IMAGE .'      
             }
         }
 
@@ -71,7 +71,7 @@ pipeline {
 
     post {
         success {
-            echo 'Blue-Green Deployment successful! Traffic switched to Green environment.'
+            echo ' Blue-Green Deployment successful! Traffic switched to Green environment.'
         }
         failure {
             echo ' Deployment failed. Check Jenkins logs for details.'

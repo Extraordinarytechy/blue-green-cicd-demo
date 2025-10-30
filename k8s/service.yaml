@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+  labels:
+    app: myapp
+spec:
+  selector:
+    app: myapp
+    version: blue    # initially pointing to blue
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: NodePort
